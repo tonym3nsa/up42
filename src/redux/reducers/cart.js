@@ -1,4 +1,4 @@
-import { ADD_TO_CART } from "../actions/cart";
+import { ADD_TO_CART, REMOVE_FROM_CART } from "../actions/cart";
 
 const initialState = {
   cart: [],
@@ -11,6 +11,16 @@ const cartReducer = (state = initialState, action) => {
       return {
         ...state,
         cart: [...state.cart, { id, displayName, credits }],
+      };
+    }
+    case REMOVE_FROM_CART: {
+      const { id } = action;
+      const cart = [...state.cart];
+      const items = cart.findIndex((item) => item.id === id);
+      cart.splice(items, 1);
+      return {
+        ...state,
+        cart,
       };
     }
     default: {

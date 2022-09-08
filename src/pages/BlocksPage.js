@@ -18,7 +18,7 @@ export const BlocksPage = () => {
         <div className="w-9/12">
           <div className="columns-4">
             {blocks?.map((block) => {
-              return <Card key={block.id} {...block} />;
+              return <Card key={block.id} {...block} className="mb-4" />;
             })}
           </div>
         </div>

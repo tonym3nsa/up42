@@ -4,7 +4,7 @@ import "./card.scss";
 import { Button } from "../Button/Button";
 
 export const Card = (props) => {
-  const { className, metadata, onClick } = props;
+  const { className, metadata, onClick, displayName } = props;
   return (
     <div
       onClick={onClick}
@@ -19,11 +19,9 @@ export const Card = (props) => {
         alt="Image"
       />
       <div className="p-6 py-4">
-        <div className="font-bold text-xl mb-2">The Coldest Sunset</div>
+        <div className="font-bold text-xl mb-2">{displayName}</div>
         <p className="text-gray-700 text-base">
-          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatibus
-          quia, nulla! Maiores et perferendis eaque, exercitationem praesentium
-          nihil.
+          {metadata?.blockPricingStrategy?.credits || 0} credits
         </p>
       </div>
       <div className="p-6">
@@ -35,6 +33,7 @@ export const Card = (props) => {
 
 Card.propTypes = {
   className: PropTypes.string,
+  displayName: PropTypes.string,
   img: PropTypes.string,
   onClick: PropTypes.func,
   children: PropTypes.string,

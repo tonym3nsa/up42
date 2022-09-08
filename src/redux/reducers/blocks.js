@@ -6,12 +6,18 @@ const initialState = {
 
 const blocksReducer = (state = initialState, action) => {
   switch (action.type) {
-    case GET_BLOCKS:
+    case GET_BLOCKS: {
+      const { response } = action;
+      const blocks = response?.data?.data;
+      console.log("blocks", blocks);
       return {
         ...state,
+        blocks,
       };
-    default:
+    }
+    default: {
       return state;
+    }
   }
 };
 

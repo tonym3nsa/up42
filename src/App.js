@@ -1,8 +1,12 @@
 import React from "react";
-import "./App.scss";
+import { BlocksPage } from "./pages/BlocksPage";
 
 function App() {
-  return <div className="App"></div>;
+  return (
+    <div className="App">
+      <BlocksPage />
+    </div>
+  );
 }
 
 export default App;

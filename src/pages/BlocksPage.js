@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getBlocks } from "../redux/actions/blocks";
 import { ListCard } from "../components/ListCard/ListCard";
+import { Cart } from "../components/Cart/Cart";
 
 export const BlocksPage = () => {
   const dispatch = useDispatch();
@@ -27,7 +28,7 @@ export const BlocksPage = () => {
             height: "100vh",
           }}
         >
-          <h1>hello wolrd</h1>
+          <Cart />
         </div>
       </div>
     </div>

@@ -1,9 +1,9 @@
 import React from "react";
 import PropTypes from "prop-types";
-import "./card.scss";
+import "./listCard.scss";
 import { Button } from "../Button/Button";
 
-export const Card = (props) => {
+export const ListCard = (props) => {
   const { className, metadata, onClick, displayName } = props;
   return (
     <div
@@ -31,7 +31,7 @@ export const Card = (props) => {
   );
 };
 
-Card.propTypes = {
+ListCard.propTypes = {
   className: PropTypes.string,
   displayName: PropTypes.string,
   img: PropTypes.string,

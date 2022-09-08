@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getBlocks } from "../redux/actions/blocks";
-import { Card } from "../components/Card/Card";
+import { ListCard } from "../components/ListCard/ListCard";
 
 export const BlocksPage = () => {
   const dispatch = useDispatch();
@@ -18,13 +18,16 @@ export const BlocksPage = () => {
         <div className="w-9/12">
           <div className="columns-4">
             {blocks?.map((block) => {
-              return <Card key={block.id} {...block} className="mb-4" />;
+              return <ListCard key={block.id} {...block} className="mb-4" />;
             })}
           </div>
         </div>
         <div
           className="w-3/12"
-          style={{ backgroundColor: "red", height: "330px" }}
+          style={{
+            backgroundColor: "grey",
+            height: "100vh",
+          }}
         >
           <h1>hello wolrd</h1>
         </div>

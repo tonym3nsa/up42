@@ -4,16 +4,16 @@ import "./card.scss";
 import { Button } from "../Button/Button";
 
 export const Card = (props) => {
-  const { className, onClick, img = "" } = props;
+  const { className, metadata, onClick } = props;
   return (
     <div
       onClick={onClick}
-      className={`${className} max-w-sm rounded overflow-hidden shadow-lg`}
+      className={`${className} rounded overflow-hidden shadow-lg display-inline-block`}
     >
       <img
         className="w-full"
         src={
-          img ||
+          metadata?.blockThumbnailUrl ||
           "https://via.placeholder.com/500/000000/808080%20?Text=Digital.com%20C/O%20https://placeholder.com/"
         }
         alt="Image"
@@ -38,5 +38,6 @@ Card.propTypes = {
   img: PropTypes.string,
   onClick: PropTypes.func,
   children: PropTypes.string,
+  metadata: PropTypes.any,
   type: PropTypes.oneOf(["submit", "button"]),
 };

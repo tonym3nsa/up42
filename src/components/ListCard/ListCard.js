@@ -2,9 +2,13 @@ import React from "react";
 import PropTypes from "prop-types";
 import "./listCard.scss";
 import { Button } from "../Button/Button";
+import { useDispatch } from "react-redux";
+import { addToCart } from "../../redux/actions/cart";
 
 export const ListCard = (props) => {
-  const { className, metadata, onClick, displayName } = props;
+  const { className, metadata, onClick, displayName, id } = props;
+  const dispatch = useDispatch();
+
   return (
     <div
       onClick={onClick}
@@ -25,18 +29,30 @@ export const ListCard = (props) => {
         </p>
       </div>
       <div className="p-6">
-        <Button className="w-full">Add to cart</Button>
+        <Button
+          onClick={() =>
+            dispatch(
+              addToCart(
+                id,
+                displayName,
+                metadata?.blockPricingStrategy?.credits
+              )
+            )
+          }
+          className="w-full"
+        >
+          Add to cart
+        </Button>
       </div>
     </div>
   );
 };
 
 ListCard.propTypes = {
+  children: PropTypes.string,
   className: PropTypes.string,
   displayName: PropTypes.string,
-  img: PropTypes.string,
+  id: PropTypes.string,
   onClick: PropTypes.func,
-  children: PropTypes.string,
   metadata: PropTypes.any,
-  type: PropTypes.oneOf(["submit", "button"]),
 };

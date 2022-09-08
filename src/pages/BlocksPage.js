@@ -6,9 +6,7 @@ import { ListCard } from "../components/ListCard/ListCard";
 export const BlocksPage = () => {
   const dispatch = useDispatch();
   const { blocks } = useSelector((state) => state.blocksReducer);
-  useEffect(() => {
-    console.log("blocks", blocks);
-  }, [blocks]);
+
   useEffect(() => {
     dispatch(getBlocks());
   }, []);

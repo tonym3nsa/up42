@@ -9,10 +9,14 @@ const blocksReducer = (state = initialState, action) => {
     case GET_BLOCKS: {
       const { response } = action;
       const blocks = response?.data?.data;
-      console.log("blocks", blocks);
+      const blocksByPricingStrategy = blocks?.filter(
+        (block) =>
+          block?.metadata?.blockPricingStrategy?.name?.toLowerCase() ===
+          "simple"
+      );
       return {
         ...state,
-        blocks,
+        blocks: blocksByPricingStrategy,
       };
     }
     default: {

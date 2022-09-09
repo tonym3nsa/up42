@@ -9,6 +9,7 @@ import {
 } from "../../redux/actions/cart";
 import { CartCard } from "../CartCard/CartCard";
 import { Modal } from "../Modal/Modal";
+import "./cart.scss";
 
 export const Cart = () => {
   const { cart, cartSum, userCredit, displayPrompt } = useSelector(
@@ -17,39 +18,41 @@ export const Cart = () => {
   const dispatch = useDispatch();
 
   return (
-    <div>
-      {cart?.map((cartItem) => {
-        return (
-          <CartCard
-            key={cartItem.id}
-            {...cartItem}
-            onClick={() => dispatch(removeFromCart(cartItem.id))}
+    <div className="relative cart bg-white shadow-lg rounded mt-28">
+      <div>
+        {cart?.map((cartItem) => {
+          return (
+            <CartCard
+              key={cartItem.id}
+              {...cartItem}
+              onClick={() => dispatch(removeFromCart(cartItem.id))}
+            />
+          );
+        })}
+        Total : {cartSum}
+        {userCredit < cartSum ? (
+          <Alert>
+            You do not have enough credit to purchase all the items in the cart
+          </Alert>
+        ) : (
+          ""
+        )}
+        <Button
+          className="px-4 py-2 primary"
+          disabled={userCredit < cartSum}
+          onClick={() => dispatch(promptPurchase(true))}
+        >
+          Buy Now
+        </Button>
+        {displayPrompt && (
+          <Modal
+            onClick={() => dispatch(buyCartItems())}
+            onDismiss={() => dispatch(promptPurchase(false))}
+            title="Confirm Purchase"
+            message="Are you sure you want to purchase all the items in the cart?"
           />
-        );
-      })}
-      Total : {cartSum}
-      {userCredit < cartSum ? (
-        <Alert>
-          You do not have enough credit to purchase all the items in the cart
-        </Alert>
-      ) : (
-        ""
-      )}
-      <Button
-        className="px-4 py-2 primary"
-        disabled={userCredit < cartSum}
-        onClick={() => dispatch(promptPurchase(true))}
-      >
-        Buy Now
-      </Button>
-      {displayPrompt && (
-        <Modal
-          onClick={() => dispatch(buyCartItems())}
-          onDismiss={() => dispatch(promptPurchase(false))}
-          title="Confirm Purchase"
-          message="Are you sure you want to purchase all the items in the cart?"
-        />
-      )}
+        )}
+      </div>
     </div>
   );
 };

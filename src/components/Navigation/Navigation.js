@@ -6,7 +6,7 @@ import "./navigation.scss";
 export const Navigation = () => {
   const { userCredit } = useSelector((state) => state.cartReducer);
   return (
-    <nav className="flex items-center justify-between flex-wrap bg-white p-6 shadow-lg	fixed w-full z-50">
+    <nav className="flex items-center justify-between flex-wrap bg-white p-6 shadow-lg fixed w-full z-50">
       <div className="flex items-center flex-shrink-0 text-white mr-6">
         <img src={logo} alt="Logo" />{" "}
         <span className="text-black text-lg font-semibold ml-4">

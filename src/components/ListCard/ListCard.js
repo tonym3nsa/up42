@@ -30,6 +30,7 @@ export const ListCard = (props) => {
       </div>
       <div className="p-6">
         <Button
+          type="add"
           onClick={() =>
             dispatch(
               addToCart(
@@ -39,7 +40,7 @@ export const ListCard = (props) => {
               )
             )
           }
-          className="w-full"
+          className="primary w-full px-4 py-2"
         >
           Add to cart
         </Button>

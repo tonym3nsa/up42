@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { Button } from "../Button/Button";
 import { Alert } from "../Alert/Alert";
 import { removeFromCart } from "../../redux/actions/cart";
+import { CartCard } from "../CartCard/CartCard";
 
 export const Cart = () => {
   const { cart } = useSelector((state) => state.cartReducer);
@@ -18,12 +19,17 @@ export const Cart = () => {
     <div>
       {cart?.map((cartItem) => {
         return (
-          <div key={cartItem.id}>
-            {cartItem.displayName}{" "}
-            <button onClick={() => dispatch(removeFromCart(cartItem.id))}>
-              Delete
-            </button>
-          </div>
+          <CartCard
+            key={cartItem.id}
+            {...cartItem}
+            onClick={() => dispatch(removeFromCart(cartItem.id))}
+          />
+          // <div key={cartItem.id}>
+          //   {cartItem.displayName}{" "}
+          //   <button onClick={() => dispatch(removeFromCart(cartItem.id))}>
+          //     Delete
+          //   </button>
+          // </div>
         );
       })}
       Total : {cartSum(cart)}
@@ -34,7 +40,10 @@ export const Cart = () => {
       ) : (
         ""
       )}
-      <Button className="display-block" disabled={userCredit < cartSum(cart)}>
+      <Button
+        className="px-4 py-2 primary"
+        disabled={userCredit < cartSum(cart)}
+      >
         Buy Now
       </Button>
     </div>

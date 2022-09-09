@@ -1,0 +1,14 @@
+$primary-color: #242324;
+$btn-primary-color: #ffffff;
+
+button{
+  &.btn{
+  background-color:$primary-color;
+  color: $btn-primary-color;
+  font-weight: 500;
+    &:disabled {
+      background-color:lighten($primary-color,15%);
+      color: darken($btn-primary-color,15%)
+    }
+  }
+}

@@ -1,11 +1,16 @@
-$primary-color: #2d3436;
+$primary-color: #008BF6;
 $btn-primary-color: #ffffff;
 
 button{
   &.btn{
-  background-color:$primary-color;
-  color: $btn-primary-color;
   font-weight: 500;
+    &.primary {
+      background-color:$primary-color;
+      color: $btn-primary-color;
+    }
+    &.link {
+      background-color:transparent;
+    }
     &:disabled {
       background-color:lighten($primary-color,15%);
       color: darken($btn-primary-color,15%);

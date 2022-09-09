@@ -2,18 +2,13 @@ import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Button } from "../Button/Button";
 import { Alert } from "../Alert/Alert";
-import { removeFromCart } from "../../redux/actions/cart";
+import { buyCartItems, removeFromCart } from "../../redux/actions/cart";
 import { CartCard } from "../CartCard/CartCard";
 
 export const Cart = () => {
-  const { cart } = useSelector((state) => state.cartReducer);
+  const { cart, cartSum } = useSelector((state) => state.cartReducer);
   const { userCredit } = useSelector((state) => state.userReducer);
   const dispatch = useDispatch();
-  const cartSum = (cartItems) => {
-    return cartItems?.reduce((creditsSum, cartItem) => {
-      return creditsSum + cartItem.credits;
-    }, 0);
-  };
 
   return (
     <div>
@@ -24,16 +19,10 @@ export const Cart = () => {
             {...cartItem}
             onClick={() => dispatch(removeFromCart(cartItem.id))}
           />
-          // <div key={cartItem.id}>
-          //   {cartItem.displayName}{" "}
-          //   <button onClick={() => dispatch(removeFromCart(cartItem.id))}>
-          //     Delete
-          //   </button>
-          // </div>
         );
       })}
-      Total : {cartSum(cart)}
-      {userCredit < cartSum(cart) ? (
+      Total : {cartSum}
+      {userCredit < cartSum ? (
         <Alert>
           You do not have enough credit to purchase all the items in the cart
         </Alert>
@@ -42,7 +31,8 @@ export const Cart = () => {
       )}
       <Button
         className="px-4 py-2 primary"
-        disabled={userCredit < cartSum(cart)}
+        disabled={userCredit < cartSum}
+        onClick={() => dispatch(buyCartItems())}
       >
         Buy Now
       </Button>

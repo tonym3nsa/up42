@@ -1,4 +1,4 @@
-import { ADD_TO_CART, REMOVE_FROM_CART } from "../actions/cart";
+import { ADD_TO_CART, BUY_CART_ITEMS, REMOVE_FROM_CART } from "../actions/cart";
 
 const initialState = {
   cart: [],
@@ -11,6 +11,12 @@ const cartReducer = (state = initialState, action) => {
       return {
         ...state,
         cart: [...state.cart, { id, displayName, credits }],
+        cartSum: [...state.cart, { id, displayName, credits }].reduce(
+          (creditsSum, cartItem) => {
+            return creditsSum + cartItem.credits;
+          },
+          0
+        ),
       };
     }
     case REMOVE_FROM_CART: {
@@ -21,6 +27,14 @@ const cartReducer = (state = initialState, action) => {
       return {
         ...state,
         cart,
+        cartSum: cart.reduce((creditsSum, cartItem) => {
+          return creditsSum + cartItem.credits;
+        }, 0),
+      };
+    }
+    case BUY_CART_ITEMS: {
+      return {
+        state,
       };
     }
     default: {

@@ -1,6 +1,6 @@
 export const ADD_TO_CART = "CART:ADD_TO_CART";
 export const REMOVE_FROM_CART = "CART:REMOVE_FROM_CART";
-export const BUY_CART_ITEM = "CART:BUY_CART_ITEM";
+export const BUY_CART_ITEMS = "CART:BUY_CART_ITEMS";
 
 /**
  * Action to add block to cart
@@ -32,12 +32,10 @@ export const removeFromCart = (id) => {
 
 /**
  * Action to buy blocks added to cart
- * @param {string[]} id array of IDs of blocks added to cart
- * @returns {{id: *[], type: string}}
+ * @returns {{type: string}}
  */
-export const buyCartItem = (id = []) => {
+export const buyCartItems = () => {
   return {
-    type: BUY_CART_ITEM,
-    id,
+    type: BUY_CART_ITEMS,
   };
 };

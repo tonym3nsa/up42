@@ -30,7 +30,6 @@ export const ListCard = (props) => {
       </div>
       <div className="p-6">
         <Button
-          type="add"
           onClick={() =>
             dispatch(
               addToCart(

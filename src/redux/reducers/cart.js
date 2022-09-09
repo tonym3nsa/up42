@@ -1,9 +1,15 @@
-import { ADD_TO_CART, BUY_CART_ITEMS, REMOVE_FROM_CART } from "../actions/cart";
+import {
+  ADD_TO_CART,
+  BUY_CART_ITEMS,
+  PROMPT_PURCHASE,
+  REMOVE_FROM_CART,
+} from "../actions/cart";
 
 const initialState = {
   cart: [],
   cartSum: 0,
   userCredit: 10.0,
+  displayPrompt: false,
 };
 
 const cartReducer = (state = initialState, action) => {
@@ -37,9 +43,17 @@ const cartReducer = (state = initialState, action) => {
     case BUY_CART_ITEMS: {
       const { userCredit, cartSum } = state;
       return {
-        state,
+        ...state,
         cart: [],
+        displayPrompt: false,
         userCredit: userCredit - cartSum,
+      };
+    }
+    case PROMPT_PURCHASE: {
+      const { status } = action;
+      return {
+        ...state,
+        displayPrompt: status,
       };
     }
     default: {

@@ -1,6 +1,7 @@
 export const ADD_TO_CART = "CART:ADD_TO_CART";
 export const REMOVE_FROM_CART = "CART:REMOVE_FROM_CART";
 export const BUY_CART_ITEMS = "CART:BUY_CART_ITEMS";
+export const PROMPT_PURCHASE = "CART:PROMPT_PURCHASE";
 
 /**
  * Action to add block to cart
@@ -37,5 +38,12 @@ export const removeFromCart = (id) => {
 export const buyCartItems = () => {
   return {
     type: BUY_CART_ITEMS,
+  };
+};
+
+export const promptPurchase = (status) => {
+  return {
+    type: PROMPT_PURCHASE,
+    status,
   };
 };

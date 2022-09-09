@@ -2,11 +2,16 @@ import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Button } from "../Button/Button";
 import { Alert } from "../Alert/Alert";
-import { buyCartItems, removeFromCart } from "../../redux/actions/cart";
+import {
+  buyCartItems,
+  promptPurchase,
+  removeFromCart,
+} from "../../redux/actions/cart";
 import { CartCard } from "../CartCard/CartCard";
+import { Modal } from "../Modal/Modal";
 
 export const Cart = () => {
-  const { cart, cartSum, userCredit } = useSelector(
+  const { cart, cartSum, userCredit, displayPrompt } = useSelector(
     (state) => state.cartReducer
   );
   const dispatch = useDispatch();
@@ -33,10 +38,18 @@ export const Cart = () => {
       <Button
         className="px-4 py-2 primary"
         disabled={userCredit < cartSum}
-        onClick={() => dispatch(buyCartItems())}
+        onClick={() => dispatch(promptPurchase(true))}
       >
         Buy Now
       </Button>
+      {displayPrompt && (
+        <Modal
+          onClick={() => dispatch(buyCartItems())}
+          onDismiss={() => dispatch(promptPurchase(false))}
+          title="concel"
+          message="mes"
+        />
+      )}
     </div>
   );
 };

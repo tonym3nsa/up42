@@ -16,8 +16,14 @@ export const BlocksPage = () => {
       <div className="flex flex-row">
         <div className="w-9/12">
           <div className="columns-4">
-            {blocks?.map((block) => {
-              return <ListCard key={block.id} {...block} className="mb-4" />;
+            {blocks?.map((block, index) => {
+              return (
+                <ListCard
+                  key={`${block.id}_${index}`}
+                  {...block}
+                  className="mb-4"
+                />
+              );
             })}
           </div>
         </div>

@@ -6,8 +6,9 @@ import { buyCartItems, removeFromCart } from "../../redux/actions/cart";
 import { CartCard } from "../CartCard/CartCard";
 
 export const Cart = () => {
-  const { cart, cartSum } = useSelector((state) => state.cartReducer);
-  const { userCredit } = useSelector((state) => state.userReducer);
+  const { cart, cartSum, userCredit } = useSelector(
+    (state) => state.cartReducer
+  );
   const dispatch = useDispatch();
 
   return (

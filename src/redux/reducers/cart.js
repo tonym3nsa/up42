@@ -2,6 +2,8 @@ import { ADD_TO_CART, BUY_CART_ITEMS, REMOVE_FROM_CART } from "../actions/cart";
 
 const initialState = {
   cart: [],
+  cartSum: 0,
+  userCredit: 10.0,
 };
 
 const cartReducer = (state = initialState, action) => {
@@ -33,8 +35,11 @@ const cartReducer = (state = initialState, action) => {
       };
     }
     case BUY_CART_ITEMS: {
+      const { userCredit, cartSum } = state;
       return {
         state,
+        cart: [],
+        userCredit: userCredit - cartSum,
       };
     }
     default: {

@@ -46,8 +46,8 @@ export const Cart = () => {
         <Modal
           onClick={() => dispatch(buyCartItems())}
           onDismiss={() => dispatch(promptPurchase(false))}
-          title="concel"
-          message="mes"
+          title="Confirm Purchase"
+          message="Are you sure you want to purchase all the items in the cart?"
         />
       )}
     </div>

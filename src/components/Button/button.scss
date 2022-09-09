@@ -1,6 +1,7 @@
 $primary-color: #008BF6;
 $btn-primary-color: #ffffff;
 $btn-default-color: #eeeeee;
+$link-color: #242324;
 
 button{
   &.btn{
@@ -11,6 +12,7 @@ button{
     }
     &.link {
       background-color:transparent;
+      color: $link-color;
     }
     &.default {
       border: solid 1px $btn-default-color;

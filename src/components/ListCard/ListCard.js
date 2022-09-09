@@ -12,7 +12,7 @@ export const ListCard = (props) => {
   return (
     <div
       onClick={onClick}
-      className={`${className} rounded overflow-hidden shadow-lg display-inline-block`}
+      className={`${className} rounded overflow-hidden shadow-lg hover:shadow-2xl display-inline-block bg-white`}
     >
       <img
         className="w-full"

@@ -1,4 +1,4 @@
-import { GET_BLOCKS } from "../actions/blocks";
+import { GET_BLOCKS, GETTING_BLOCKS } from "../actions/blocks";
 
 const initialState = {
   blocks: [],
@@ -16,6 +16,14 @@ const blocksReducer = (state = initialState, action) => {
       return {
         ...state,
         blocks: blocksByPricingStrategy,
+      };
+    }
+    case GETTING_BLOCKS: {
+      const { status } = action;
+      console.log("getti", status);
+      return {
+        ...state,
+        gettingBlocks: status,
       };
     }
     default: {

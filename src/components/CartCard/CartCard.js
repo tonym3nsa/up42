@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import { Button } from "../Button/Button";
-import { CloseIcon } from "../Icons/CloseIcon";
+import { CloseIcon } from "../Icons/CloseIcon/CloseIcon";
 import "./cartCard.scss";
 
 export const CartCard = (props) => {

@@ -61,7 +61,7 @@ export const Cart = () => {
         )}
         <Button
           className="px-4 py-2 checkout w-full"
-          disabled={userCredit < cartSum}
+          disabled={userCredit < cartSum || cart.length < 1}
           onClick={() => dispatch(promptPurchase(true))}
         >
           Buy Now

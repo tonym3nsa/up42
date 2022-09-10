@@ -2,6 +2,7 @@ $primary-color: #008BF6;
 $btn-primary-color: #ffffff;
 $btn-default-color: #eeeeee;
 $link-color: #242324;
+$checkout-color:#00E4B8;
 
 button{
   &.btn{
@@ -16,6 +17,13 @@ button{
     }
     &.default {
       border: solid 1px $btn-default-color;
+    }
+    &.checkout {
+      background-color:$checkout-color;
+      &:disabled {
+        background-color:lighten($checkout-color,45%);
+        color: darken($btn-primary-color,25%);
+      }
     }
     &:disabled {
       background-color:lighten($primary-color,15%);

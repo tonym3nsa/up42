@@ -19,40 +19,62 @@ export const Cart = () => {
 
   return (
     <div className="relative cart bg-white shadow-lg rounded mt-28">
-      <div>
-        {cart?.map((cartItem) => {
-          return (
-            <CartCard
-              key={cartItem.id}
-              {...cartItem}
-              onClick={() => dispatch(removeFromCart(cartItem.id))}
-            />
-          );
-        })}
-        Total : {cartSum}
+      <div
+        className="p-5 border-b-2 border-gray-100
+"
+      >
+        <span className="font-semibold text-2xl">Cart</span>
+      </div>
+      <div className="cart-list p-5">
+        {cart?.length > 0 ? (
+          cart?.map((cartItem) => {
+            return (
+              <CartCard
+                key={cartItem.id}
+                {...cartItem}
+                onClick={() => dispatch(removeFromCart(cartItem.id))}
+              />
+            );
+          })
+        ) : (
+          <div className="text-center">
+            <div className="text-6xl">&#128542;</div>
+            <div className="font-semibold text-2xl text-gray-400">
+              Your cart is empty
+            </div>
+            <div>You haven&#39;t added anything to cart yet</div>
+          </div>
+        )}
+      </div>
+      <div className="absolute bottom-0 p-5 w-full border-gray-100 bg-white border-t-2">
+        <div className="grid grid-cols-2 font-semibold text-xl py-5">
+          <div>Total :</div>
+          <div className="text-right">{cartSum.toFixed(2)} credits</div>
+        </div>
+
         {userCredit < cartSum ? (
-          <Alert>
+          <Alert className="mb-5">
             You do not have enough credit to purchase all the items in the cart
           </Alert>
         ) : (
           ""
         )}
         <Button
-          className="px-4 py-2 primary"
+          className="px-4 py-2 checkout w-full"
           disabled={userCredit < cartSum}
           onClick={() => dispatch(promptPurchase(true))}
         >
           Buy Now
         </Button>
-        {displayPrompt && (
-          <Modal
-            onClick={() => dispatch(buyCartItems())}
-            onDismiss={() => dispatch(promptPurchase(false))}
-            title="Confirm Purchase"
-            message="Are you sure you want to purchase all the items in the cart?"
-          />
-        )}
       </div>
+      {displayPrompt && (
+        <Modal
+          onClick={() => dispatch(buyCartItems())}
+          onDismiss={() => dispatch(promptPurchase(false))}
+          title="Confirm Purchase"
+          message="Are you sure you want to purchase all the items in the cart?"
+        />
+      )}
     </div>
   );
 };

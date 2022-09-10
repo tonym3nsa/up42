@@ -16,8 +16,6 @@ export const BlocksPage = () => {
       <div className="container mx-auto">
         <div className="grid grid-cols-2 xs:grid-cols-1 page blocksPage-columns gap-4">
           <div className="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-4 gap-4 mt-28">
-            {/*<div className="columns-4 mt-24">*/}
-
             {blocks?.map((block, index) => {
               return (
                 <ListCard
@@ -27,7 +25,6 @@ export const BlocksPage = () => {
                 />
               );
             })}
-            {/*</div>*/}
           </div>
           <Cart />
         </div>

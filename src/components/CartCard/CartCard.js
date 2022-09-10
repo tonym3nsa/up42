@@ -8,9 +8,9 @@ export const CartCard = (props) => {
   const { onClick, displayName, credits } = props;
 
   return (
-    <div className="bg-white border border-gray-100 text-red-700 px-4 py-3 rounded relative mb-2">
+    <div className="bg-white border border-gray-100 text-gray-500 px-4 py-3 rounded relative mb-2">
       <strong className="font-bold">{displayName}</strong>
-      <span className="block sm:inline">{credits || 0} credits</span>
+      <div className="block ">{credits || 0} credits</div>
       <span className="absolute top-0 bottom-0 right-0 px-4 py-3">
         <Button className="link" onClick={onClick}>
           <CloseIcon className="fill-current h-6 w-6 text-black" />

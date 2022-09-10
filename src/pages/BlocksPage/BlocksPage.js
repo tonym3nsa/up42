@@ -14,8 +14,8 @@ export const BlocksPage = () => {
   return (
     <Fragment>
       <div className="container mx-auto">
-        <div className="grid grid-cols-2 xs:grid-cols-1 page blocksPage-columns gap-4">
-          <div className="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-4 gap-4 mt-28">
+        <div className="grid grid-cols-2 xs:grid-cols-1 page blocks-page-columns gap-4">
+          <div className="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-3 gap-4 mt-28">
             {blocks?.map((block, index) => {
               return (
                 <ListCard

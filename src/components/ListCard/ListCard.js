@@ -6,13 +6,13 @@ import { useDispatch } from "react-redux";
 import { addToCart } from "../../redux/actions/cart";
 
 export const ListCard = (props) => {
-  const { className, metadata, onClick, displayName, id } = props;
+  const { className, metadata, onClick, displayName, id, description } = props;
   const dispatch = useDispatch();
 
   return (
     <div
       onClick={onClick}
-      className={`${className} rounded overflow-hidden shadow-lg hover:shadow-2xl display-inline-block bg-white`}
+      className={`${className} relative rounded overflow-hidden shadow-lg hover:shadow-2xl display-inline-block bg-white`}
     >
       <img
         className="w-full"
@@ -23,12 +23,13 @@ export const ListCard = (props) => {
         alt="Image"
       />
       <div className="p-6 py-4">
-        <div className="font-bold text-xl mb-2">{displayName}</div>
-        <p className="text-gray-700 text-base">
-          {metadata?.blockPricingStrategy?.credits || 0} credits
-        </p>
+        <div className="font-bold text-black mb-5">{displayName}</div>
+        <div className="description py-5">
+          {description?.substring(0, 150)}
+          {description?.length > 150 ? "..." : ""}
+        </div>
       </div>
-      <div className="p-6">
+      <div className="absolute bottom-0 p-5 w-full">
         <Button
           onClick={() =>
             dispatch(
@@ -41,7 +42,7 @@ export const ListCard = (props) => {
           }
           className="primary w-full px-4 py-2"
         >
-          Add to cart
+          {metadata?.blockPricingStrategy?.credits || 0} credits
         </Button>
       </div>
     </div>
@@ -55,4 +56,5 @@ ListCard.propTypes = {
   id: PropTypes.string,
   onClick: PropTypes.func,
   metadata: PropTypes.any,
+  description: PropTypes.string,
 };

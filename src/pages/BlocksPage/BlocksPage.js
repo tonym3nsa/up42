@@ -5,10 +5,12 @@ import { ListCard } from "../../components/ListCard/ListCard";
 import { Cart } from "../../components/Cart/Cart";
 import "./blocksPage.scss";
 import { Spinner } from "../../components/Icons/Spinner/Spinner";
+import { ErrorState } from "../../components/ErrorState/ErrorState";
 
 export const BlocksPage = () => {
   const dispatch = useDispatch();
-  const { blocks, gettingBlocks } = useSelector((state) => state.blocksReducer);
+  const { blocks, gettingBlocks, errorGettingBlocks, errorMessage } =
+    useSelector((state) => state.blocksReducer);
   const { cart } = useSelector((state) => state.cartReducer);
   useEffect(() => {
     dispatch(getBlocks());
@@ -19,6 +21,8 @@ export const BlocksPage = () => {
       <div className="container mx-auto">
         {gettingBlocks ? (
           <Spinner />
+        ) : errorGettingBlocks ? (
+          <ErrorState errorMessage={errorMessage} />
         ) : (
           <div className="grid grid-cols-2 xs:grid-cols-1 page blocks-page-columns gap-4">
             <div className="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-3 gap-4 mt-28">

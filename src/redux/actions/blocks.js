@@ -1,5 +1,6 @@
 export const GET_BLOCKS = "BLOCKS:GET_BLOCKS";
 export const GETTING_BLOCKS = "BLOCKS:GETTING_BLOCKS";
+export const ERROR_GETTING_BLOCKS = "error?.message:ERROR_GETTING_BLOCKS";
 import axios from "axios";
 
 export const getBlocks = () => {
@@ -28,7 +29,11 @@ export const getBlocks = () => {
           type: GETTING_BLOCKS,
           status: false,
         });
-        throw error;
+        dispatch({
+          type: ERROR_GETTING_BLOCKS,
+          status: true,
+          errorMessage: error?.message,
+        });
       });
   };
 };

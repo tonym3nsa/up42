@@ -1,4 +1,8 @@
-import { GET_BLOCKS, GETTING_BLOCKS } from "../actions/blocks";
+import {
+  ERROR_GETTING_BLOCKS,
+  GET_BLOCKS,
+  GETTING_BLOCKS,
+} from "../actions/blocks";
 
 const initialState = {
   blocks: [],
@@ -20,10 +24,17 @@ const blocksReducer = (state = initialState, action) => {
     }
     case GETTING_BLOCKS: {
       const { status } = action;
-      console.log("getti", status);
       return {
         ...state,
         gettingBlocks: status,
+      };
+    }
+    case ERROR_GETTING_BLOCKS: {
+      const { errorMessage, status } = action;
+      return {
+        ...state,
+        errorGettingBlocks: status,
+        errorMessage,
       };
     }
     default: {

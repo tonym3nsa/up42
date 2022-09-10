@@ -8,9 +8,11 @@ import "./blocksPage.scss";
 export const BlocksPage = () => {
   const dispatch = useDispatch();
   const { blocks } = useSelector((state) => state.blocksReducer);
+  const { cart } = useSelector((state) => state.cartReducer);
   useEffect(() => {
     dispatch(getBlocks());
   }, []);
+
   return (
     <Fragment>
       <div className="container mx-auto">
@@ -20,6 +22,7 @@ export const BlocksPage = () => {
               return (
                 <ListCard
                   key={`${block.id}_${index}`}
+                  cart={cart}
                   {...block}
                   className="mb-4 w-full"
                 />

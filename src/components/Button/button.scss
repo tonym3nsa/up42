@@ -3,6 +3,7 @@ $btn-primary-color: #ffffff;
 $btn-default-color: #eeeeee;
 $link-color: #242324;
 $checkout-color:#00E4B8;
+$remove-color: #EB527D;
 
 button{
   &.btn{
@@ -14,6 +15,10 @@ button{
     &.link {
       background-color:transparent;
       color: $link-color;
+    }
+    &.remove {
+      background-color:$remove-color;
+      color: $btn-primary-color;
     }
     &.default {
       border: solid 1px $btn-default-color;

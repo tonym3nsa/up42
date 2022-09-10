@@ -1,8 +1,8 @@
 import React from "react";
 import PropTypes from "prop-types";
-import "./cartCard.scss";
 import { Button } from "../Button/Button";
 import { CloseIcon } from "../CloseIcon";
+import "./cartCard.scss";
 
 export const CartCard = (props) => {
   const { onClick, displayName, credits } = props;

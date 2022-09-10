@@ -1,12 +1,13 @@
 import React from "react";
 import PropTypes from "prop-types";
-import "./listCard.scss";
 import { Button } from "../Button/Button";
 import { useDispatch } from "react-redux";
-import { addToCart } from "../../redux/actions/cart";
+import { addToCart, removeFromCart } from "../../redux/actions/cart";
+import "./listCard.scss";
 
 export const ListCard = (props) => {
-  const { className, metadata, onClick, displayName, id, description } = props;
+  const { className, metadata, onClick, displayName, id, description, cart } =
+    props;
   const dispatch = useDispatch();
 
   return (
@@ -30,20 +31,29 @@ export const ListCard = (props) => {
         </div>
       </div>
       <div className="absolute bottom-0 p-5 w-full">
-        <Button
-          onClick={() =>
-            dispatch(
-              addToCart(
-                id,
-                displayName,
-                metadata?.blockPricingStrategy?.credits
+        {cart.find((cartItem) => cartItem?.id === id) ? (
+          <Button
+            onClick={() => dispatch(removeFromCart(id))}
+            className="remove w-full px-4 py-2"
+          >
+            Remove from cart
+          </Button>
+        ) : (
+          <Button
+            onClick={() =>
+              dispatch(
+                addToCart(
+                  id,
+                  displayName,
+                  metadata?.blockPricingStrategy?.credits
+                )
               )
-            )
-          }
-          className="primary w-full px-4 py-2"
-        >
-          {metadata?.blockPricingStrategy?.credits || 0} credits
-        </Button>
+            }
+            className="primary w-full px-4 py-2"
+          >
+            {metadata?.blockPricingStrategy?.credits || 0} credits
+          </Button>
+        )}
       </div>
     </div>
   );
@@ -57,4 +67,5 @@ ListCard.propTypes = {
   onClick: PropTypes.func,
   metadata: PropTypes.any,
   description: PropTypes.string,
+  cart: PropTypes.any,
 };

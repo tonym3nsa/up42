@@ -14,6 +14,6 @@ export const Alert = (props) => {
 };
 
 Alert.propTypes = {
-  children: PropTypes.string,
+  children: PropTypes.string.isRequired,
   className: PropTypes.string,
 };

@@ -6,7 +6,7 @@ import { addToCart, removeFromCart } from "../../redux/actions/cart";
 import "./listCard.scss";
 
 export const ListCard = (props) => {
-  const { className, metadata, onClick, displayName, id, description, cart } =
+  const { cart, className, description, displayName, id, metadata, onClick } =
     props;
   const dispatch = useDispatch();
 
@@ -31,6 +31,9 @@ export const ListCard = (props) => {
         </div>
       </div>
       <div className="absolute bottom-0 p-5 w-full">
+        <div className="font-semibold text-xl text-gray-500 mb-5">
+          {metadata?.blockPricingStrategy?.credits || 0} credits
+        </div>
         {cart.find((cartItem) => cartItem?.id === id) ? (
           <Button
             onClick={() => dispatch(removeFromCart(id))}
@@ -51,7 +54,7 @@ export const ListCard = (props) => {
             }
             className="primary w-full px-4 py-2"
           >
-            {metadata?.blockPricingStrategy?.credits || 0} credits
+            Add to Cart
           </Button>
         )}
       </div>
@@ -60,12 +63,11 @@ export const ListCard = (props) => {
 };
 
 ListCard.propTypes = {
-  children: PropTypes.string,
+  cart: PropTypes.array,
   className: PropTypes.string,
-  displayName: PropTypes.string,
-  id: PropTypes.string,
-  onClick: PropTypes.func,
-  metadata: PropTypes.any,
   description: PropTypes.string,
-  cart: PropTypes.any,
+  displayName: PropTypes.string.isRequired,
+  id: PropTypes.string,
+  metadata: PropTypes.object.isRequired,
+  onClick: PropTypes.func,
 };

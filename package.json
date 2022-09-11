@@ -51,5 +51,5 @@
     "sass": "^1.54.9",
     "tailwindcss": "^3.1.8"
   },
-  "proxy": "https://api.up42.com/marketplace"
+  "proxy": "https://up42-server.onrender.com/blocks"
 }

@@ -6,7 +6,7 @@ import axios from "axios";
 export const getBlocks = () => {
   const config = {
     method: "GET",
-    url: "/blocks",
+    url: "https://up42-server.onrender.com/blocks",
   };
   return (dispatch) => {
     dispatch({

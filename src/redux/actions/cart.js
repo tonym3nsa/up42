@@ -44,7 +44,7 @@ export const buyCartItems = () => {
 
 /**
  * Action to prompt purchase
- * @param status
+ * @param {boolean} status
  * @returns {{type: string, status}}
  */
 export const promptPurchase = (status) => {
@@ -54,6 +54,11 @@ export const promptPurchase = (status) => {
   };
 };
 
+/**
+ * Toggle cart in mobile view
+ * @param {boolean} status
+ * @returns {{type: string, status}}
+ */
 export const displayMobileCart = (status) => {
   return {
     type: DISPLAY_MOBILE_CART,

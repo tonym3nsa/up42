@@ -21,19 +21,16 @@ export const Cart = (props) => {
 
   return (
     <div
-      className={`fixed right-8  cart bg-white shadow-lg rounded mt-28 ${
+      className={`fixed right-8 cart bg-white shadow-lg rounded mt-28 ${
         displayMobileCart
           ? "xs:visible"
           : "xs:invisible w-1/5 lg:visible xl:visible 2xl:visible rounded-r-3xl:visible"
       }`}
     >
-      <div
-        className="p-5 border-b-2 border-gray-100
-"
-      >
+      <div className="p-5 border-b-2 border-gray-100">
         <span className="font-semibold text-2xl">Cart</span>
       </div>
-      <div className="cart-list p-5">
+      <div className="cart-list p-5 pb-60">
         {cart?.length > 0 ? (
           cart?.map((cartItem) => {
             return (
@@ -59,7 +56,6 @@ export const Cart = (props) => {
           <div>Total :</div>
           <div className="text-right">{cartSum.toFixed(2)} credits</div>
         </div>
-
         {userCredit < cartSum ? (
           <Alert className="mb-5">
             You do not have enough credit to purchase all the items in the cart

@@ -1,8 +1,8 @@
 .cart {
   height: 80vh;
   .cart-list {
-    height: 60vh;
-    overflow-y: auto;
+    height: 70%;
+    overflow-y: scroll !important;
   }
 }
 

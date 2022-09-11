@@ -18,7 +18,7 @@ export const Cart = () => {
   const dispatch = useDispatch();
 
   return (
-    <div className="relative cart bg-white shadow-lg rounded mt-28">
+    <div className="fixed right-8 w-1/5 cart bg-white shadow-lg rounded mt-28">
       <div
         className="p-5 border-b-2 border-gray-100
 "

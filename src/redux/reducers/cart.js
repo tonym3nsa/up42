@@ -1,6 +1,7 @@
 import {
   ADD_TO_CART,
   BUY_CART_ITEMS,
+  DISPLAY_MOBILE_CART,
   PROMPT_PURCHASE,
   REMOVE_FROM_CART,
 } from "../actions/cart";
@@ -10,6 +11,7 @@ const initialState = {
   cartSum: 0,
   userCredit: 10.0,
   displayPrompt: false,
+  displayCart: false,
 };
 
 const cartReducer = (state = initialState, action) => {
@@ -54,6 +56,13 @@ const cartReducer = (state = initialState, action) => {
       return {
         ...state,
         displayPrompt: status,
+      };
+    }
+    case DISPLAY_MOBILE_CART: {
+      const { status } = action;
+      return {
+        ...state,
+        displayCart: status,
       };
     }
     default: {

@@ -10,15 +10,23 @@ import {
 import { CartCard } from "../CartCard/CartCard";
 import { Modal } from "../Modal/Modal";
 import "./cart.scss";
+import PropTypes from "prop-types";
 
-export const Cart = () => {
+export const Cart = (props) => {
+  const { displayMobileCart } = props;
   const { cart, cartSum, userCredit, displayPrompt } = useSelector(
     (state) => state.cartReducer
   );
   const dispatch = useDispatch();
 
   return (
-    <div className="fixed right-8 w-1/5 cart bg-white shadow-lg rounded mt-28">
+    <div
+      className={`fixed right-8  cart bg-white shadow-lg rounded mt-28 ${
+        displayMobileCart
+          ? "xs:visible"
+          : "xs:invisible w-1/5 lg:visible xl:visible 2xl:visible rounded-r-3xl:visible"
+      }`}
+    >
       <div
         className="p-5 border-b-2 border-gray-100
 "
@@ -77,4 +85,8 @@ export const Cart = () => {
       )}
     </div>
   );
+};
+
+Cart.propTypes = {
+  displayMobileCart: PropTypes.oneOfType[(PropTypes.bool, PropTypes.string)],
 };

@@ -2,7 +2,7 @@ import { shallow } from "enzyme";
 import Alert from "./Alert";
 
 const props = {
-  children: "Alert Text",
+  children: "CartButton Text",
   className: "alertClass",
 };
 const setup = () =>
@@ -11,16 +11,16 @@ const setup = () =>
 const findByTestAttributes = (wrapper, val) =>
   wrapper.find(`[data-test='${val}']`);
 
-test("expect Alert component to exist", () => {
+test("expect CartButton component to exist", () => {
   const wrapper = setup();
   const component = findByTestAttributes(wrapper, "alert");
   expect(component.length).toBe(1);
 });
 
-test("expect Alert component's props", () => {
+test("expect CartButton component's props", () => {
   const wrapper = setup();
   const component = findByTestAttributes(wrapper, "alert");
-  expect(component.prop("children")).toBe("Alert Text");
-  expect(component.text()).toBe("Alert Text");
+  expect(component.prop("children")).toBe("CartButton Text");
+  expect(component.text()).toBe("CartButton Text");
   expect(component.hasClass("alertClass")).toBe(true);
 });

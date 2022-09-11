@@ -2,6 +2,7 @@ export const ADD_TO_CART = "CART:ADD_TO_CART";
 export const REMOVE_FROM_CART = "CART:REMOVE_FROM_CART";
 export const BUY_CART_ITEMS = "CART:BUY_CART_ITEMS";
 export const PROMPT_PURCHASE = "CART:PROMPT_PURCHASE";
+export const DISPLAY_MOBILE_CART = "CART:DISPLAY_MOBILE_CART";
 
 /**
  * Action to add block to cart
@@ -49,6 +50,13 @@ export const buyCartItems = () => {
 export const promptPurchase = (status) => {
   return {
     type: PROMPT_PURCHASE,
+    status,
+  };
+};
+
+export const displayMobileCart = (status) => {
+  return {
+    type: DISPLAY_MOBILE_CART,
     status,
   };
 };

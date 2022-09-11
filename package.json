@@ -50,6 +50,5 @@
     "postcss": "^8.4.16",
     "sass": "^1.54.9",
     "tailwindcss": "^3.1.8"
-  },
-  "proxy": "https://up42-server.onrender.com/blocks"
+  }
 }

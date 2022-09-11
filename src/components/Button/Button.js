@@ -9,6 +9,7 @@ export const Button = (props) => {
       onClick={onClick}
       disabled={disabled}
       className={`${className} btn rounded`}
+      data-test="button"
     >
       {children}
     </button>
@@ -16,9 +17,11 @@ export const Button = (props) => {
 };
 
 Button.propTypes = {
-  className: PropTypes.string,
+  className: PropTypes.string.isRequired,
   disabled: PropTypes.bool,
   onClick: PropTypes.func.isRequired,
   children: PropTypes.oneOfType([PropTypes.string, PropTypes.object])
     .isRequired,
 };
+
+export default Button;

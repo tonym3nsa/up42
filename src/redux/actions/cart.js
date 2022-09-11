@@ -41,6 +41,11 @@ export const buyCartItems = () => {
   };
 };
 
+/**
+ * Action to prompt purchase
+ * @param status
+ * @returns {{type: string, status}}
+ */
 export const promptPurchase = (status) => {
   return {
     type: PROMPT_PURCHASE,

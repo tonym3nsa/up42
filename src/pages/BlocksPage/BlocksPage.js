@@ -14,6 +14,7 @@ export const BlocksPage = () => {
   const { blocks, gettingBlocks, errorGettingBlocks, errorMessage } =
     useSelector((state) => state.blocksReducer);
   const { cart, displayCart } = useSelector((state) => state.cartReducer);
+
   useEffect(() => {
     dispatch(getBlocks());
   }, []);

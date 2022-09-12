@@ -2,7 +2,7 @@
 
 A React 18 single page application used to fetch BLOCKS from the UP42 marketplace and add/remove blocks to a cart to be purchased by a user.
 
-Demo of the application is available [visit google](https://up42-clinet.onrender.com/)
+Demo of the application is available [here](https://up42-clinet.onrender.com/)
 
 ### Requirements
 
